@@ -18,9 +18,29 @@ Run `./gradlew clean test jacocoTestReport` for Code coverage Reports.
 
 ## Program control flow.
 
-Once the Spring Boot application is up and running, it takes arguments of file and date and directs to findMostActiveCookies method in the CookieService Class.
+Once the Spring Boot application is up and running, it takes arguments of file and date.
+It sets the filename and stores all the cookies in the files (in Singleton class)
 
-Inside the method, it first reads the file and then filters the file with respect to the given date and maps the count of each cookie and finally return the cookies with maximum count.
+It then directs to findMostActiveCookies method in the CookieLogController Class which then gets the most active cookie from the service Layer logic and returns List.
+
+
+## Decision Choices
+
+Cookie Model has Cookie_ID and timestamp as Parameters.
+
+CamelCase naming system is used.
+
+CookieLogRepository as Singleton Class as it will only have one instance. It has setDataFromFile method which will take filename and set cookies data. getCookies method whenever called will return list of cookies for given instance.
+
+OffsetDateTime format is used. We can use LocalDateTime,etc too as we are only comparing the date, so the time precision is not required.
+
+JUnit Tests are written.
+
+For more abstraction, Interfaces can be used in future scope when complex logic or Inheritance is required.
+
+For future Scope, we can also set a flag that the filename can also be set only once.
+
+
 
 ## Code Coverage information
 

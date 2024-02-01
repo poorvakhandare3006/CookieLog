@@ -21,7 +21,6 @@ public class CookieLogApplication {
     @Autowired
     CookieLogController cookieLogController;
 
-    @Bean
     public CommandLineRunner commandLineRunner() {
         return args -> {
             String filename = null;
